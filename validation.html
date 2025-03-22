@@ -78,11 +78,11 @@
             document.getElementById('confirmEmailError').textContent = '';
             document.getElementById('passwordError').textContent = '';
             document.getElementById('confirmPasswordError').textContent = '';
-            document.getElementById('successMessage').textContent = '';
 
             // Name validation
             if (name.length < 2) {
                 document.getElementById('nameError').textContent = 'Name must be at least 2 characters long';
+                document.getElementById('successMessage').textContent = '';
                 isValid = false;
             }
 
@@ -90,32 +90,38 @@
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                document.getElementById('successMessage').textContent = '';
                 isValid = false;
             }
 
             // Confirm email validation
             if (email !== confirmEmail) {
                 document.getElementById('confirmEmailError').textContent = 'Emails do not match';
+                document.getElementById('successMessage').textContent = '';
                 isValid = false;
             }
 
             // Password validation
             if (password.length < 6) {
                 document.getElementById('passwordError').textContent = 'Password must be at least 6 characters long';
+                document.getElementById('successMessage').textContent = '';
                 isValid = false;
             }
 
             // Confirm password validation
             if (password !== confirmPassword) {
                 document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+                document.getElementById('successMessage').textContent = '';
                 isValid = false;
             }
 
             if (isValid) {
                 document.getElementById('successMessage').textContent = "Hope you didn't put your real data in! I'm not logging anything, but that ain't safe.";
+                document.getElementById('myForm').reset();
+                return false; // Prevent form submission to keep the message visible
             }
 
-            return isValid;
+            return false; // Prevent actual form submission in all cases
         }
     </script>
 </body>
