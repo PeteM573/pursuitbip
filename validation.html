@@ -20,6 +20,12 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+        #successMessage {
+            text-align: center;
+            color: #666;
+            margin-top: 20px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -56,6 +62,7 @@
 
         <button type="submit">Submit</button>
     </form>
+    <div id="successMessage"></div>
     <script>
         function validateForm() {
             let isValid = true;
@@ -71,6 +78,7 @@
             document.getElementById('confirmEmailError').textContent = '';
             document.getElementById('passwordError').textContent = '';
             document.getElementById('confirmPasswordError').textContent = '';
+            document.getElementById('successMessage').textContent = '';
 
             // Name validation
             if (name.length < 2) {
@@ -101,6 +109,10 @@
             if (password !== confirmPassword) {
                 document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
                 isValid = false;
+            }
+
+            if (isValid) {
+                document.getElementById('successMessage').textContent = "Hope you didn't put your real data in! I'm not logging anything, but that ain't safe.";
             }
 
             return isValid;
