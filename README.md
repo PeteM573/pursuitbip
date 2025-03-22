@@ -1,2 +1,2 @@
-# pursuitbip.github.io
+# building in public
 Building in Public with Pursuit
